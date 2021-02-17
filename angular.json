@@ -18,7 +18,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/seng-demo",
             "index": "src/index.html",
@@ -28,12 +28,23 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@sauter/modulo6-theme-lib/assets",
+                "output": "./assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@sauter/cloud-theme-components-lib/resources",
+                "output": "./assets/"
+              }
             ],
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "src/webpack.config.js"
           },
           "configurations": {
             "production": {
@@ -62,13 +73,24 @@
                   "maximumError": "4kb"
                 }
               ]
+            },
+            "local": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.local.ts"
+                }
+              ],
+              "extraWebpackConfig": "src/webpack.config.js"
             }
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "options": {
-            "browserTarget": "seng-demo:build"
+            "browserTarget": "seng-demo:build",
+            "extraWebpackConfig": "src/webpack.config.js",
+            "port": 4204
           },
           "configurations": {
             "production": {

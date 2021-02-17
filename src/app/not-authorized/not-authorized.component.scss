@@ -1,0 +1,55 @@
+$iconColor: #ffcc00;
+$cardBgColor: #fff;
+$shadowColor: #ccc;
+
+.center-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  height: 335px;
+  width: 740px;
+  background: $cardBgColor;
+  box-shadow: 3px 3px 15px 2px $shadowColor;
+
+  .fa.fa-exclamation-circle {
+    font-size: 64px;
+    padding: 15px;
+    color: $iconColor;
+    float: left;
+  }
+
+  .center-right-container-row-title {
+    padding-top: 25px;
+    width: 85%;
+    float: left;
+
+    &.title-text {
+      font-size: 27px;
+      font-family: "FuturaLight" !important;
+
+      > hr {
+        margin-top: 3px;
+      }
+    }
+  }
+
+  .description-text {
+    font-size: 22px;
+    padding-left: 12%;
+  }
+}
+@media (max-width: 640px) {
+  .center-container {
+    width: 350px;
+    height: 435px;
+
+    .center-right-container-row-title {
+      padding-left: 15px,;
+    }
+
+    .description-text {
+      display: inline-block;
+    }
+  }
+}
